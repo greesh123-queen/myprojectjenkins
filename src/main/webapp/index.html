@@ -1,155 +1,334 @@
-<!-- Save this file as index.html inside src/main/webapp/ -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greeshma's Store</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greeshma's Store</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family: Arial, sans-serif;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-        body{
-            background:#f4f4f4;
-        }
+    body {
+      background: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
 
-        header{
-            background:#ff4d6d;
-            color:white;
-            padding:20px;
-            text-align:center;
-            font-size:32px;
-            font-weight:bold;
-            box-shadow:0 4px 10px rgba(0,0,0,0.2);
-        }
+    header {
+      background: #ff6b81;
+      color: white;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        .hero{
-            height:350px;
-            background:url('store-banner.jpg') center/cover no-repeat;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            color:white;
-            text-shadow:2px 2px 8px black;
-            font-size:40px;
-            font-weight:bold;
-        }
+    header h1 {
+      font-size: 32px;
+    }
 
-        .products{
-            padding:40px;
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-            gap:25px;
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
 
-        .card{
-            background:white;
-            border-radius:15px;
-            overflow:hidden;
-            box-shadow:0 4px 12px rgba(0,0,0,0.15);
-            transition:0.3s;
-        }
+    nav a:hover {
+      color: #ffeaa7;
+    }
 
-        .card:hover{
-            transform:translateY(-5px);
-        }
+    .hero {
+      height: 90vh;
+      background: linear-gradient(135deg, #ff6b81, #ffb8b8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
 
-        .card img{
-            width:100%;
-            height:250px;
-            object-fit:cover;
-        }
+    .hero h2 {
+      font-size: 55px;
+      margin-bottom: 20px;
+    }
 
-        .card-content{
-            padding:15px;
-        }
+    .hero p {
+      font-size: 22px;
+      max-width: 700px;
+    }
 
-        .card-content h3{
-            margin-bottom:10px;
-            color:#333;
-        }
+    .hero button {
+      margin-top: 30px;
+      padding: 15px 35px;
+      border: none;
+      background: white;
+      color: #ff6b81;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-        .price{
-            color:#ff4d6d;
-            font-size:20px;
-            font-weight:bold;
-        }
+    .hero button:hover {
+      background: #333;
+      color: white;
+    }
 
-        button{
-            margin-top:15px;
-            padding:10px 20px;
-            border:none;
-            background:#ff4d6d;
-            color:white;
-            border-radius:8px;
-            cursor:pointer;
-            font-size:16px;
-        }
+    .products {
+      padding: 80px 50px;
+      text-align: center;
+      background: white;
+    }
 
-        button:hover{
-            background:#e63b5c;
-        }
+    .products h2 {
+      font-size: 40px;
+      margin-bottom: 50px;
+      color: #ff6b81;
+    }
 
-        footer{
-            background:#222;
-            color:white;
-            text-align:center;
-            padding:20px;
-            margin-top:40px;
-        }
-    </style>
+    .product-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #ff6b81;
+    }
+
+    .card p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .card button {
+      padding: 12px 25px;
+      border: none;
+      background: #ff6b81;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .card button:hover {
+      background: #333;
+    }
+
+    .about {
+      padding: 80px 50px;
+      background: #ffeef2;
+      text-align: center;
+    }
+
+    .about h2 {
+      font-size: 40px;
+      margin-bottom: 25px;
+      color: #ff6b81;
+    }
+
+    .about p {
+      max-width: 900px;
+      margin: auto;
+      font-size: 18px;
+    }
+
+    .contact {
+      padding: 80px 50px;
+      background: white;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 40px;
+      margin-bottom: 30px;
+      color: #ff6b81;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    input,
+    textarea {
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    textarea {
+      resize: none;
+      height: 150px;
+    }
+
+    form button {
+      padding: 15px;
+      border: none;
+      background: #ff6b81;
+      color: white;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    form button:hover {
+      background: #333;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav {
+        margin-top: 15px;
+      }
+
+      .hero h2 {
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-    <header>
-        🛍️ Greeshma's Store
-    </header>
+  <header>
+    <h1>Greeshma's Store</h1>
 
-    <section class="hero">
-        Welcome to Greeshma's Fashion Store
-    </section>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-    <section class="products">
+  <section class="hero" id="home">
+    <h2>Welcome to Greeshma's Store</h2>
+    <p>
+      Discover stylish collections, amazing offers, and trending products.
+      Your perfect shopping destination starts here.
+    </p>
 
-        <div class="card">
-            <img src="images/product1.jpg" alt="Product">
-            <div class="card-content">
-                <h3>Stylish Dress</h3>
-                <p class="price">₹999</p>
-                <button>Buy Now</button>
-            </div>
-        </div>
+    <button onclick="showMessage()">Shop Now</button>
+  </section>
 
-        <div class="card">
-            <img src="images/product2.jpg" alt="Product">
-            <div class="card-content">
-                <h3>Trendy Handbag</h3>
-                <p class="price">₹799</p>
-                <button>Buy Now</button>
-            </div>
-        </div>
+  <section class="products" id="products">
+    <h2>Our Products</h2>
 
-        <div class="card">
-            <img src="images/product3.jpg" alt="Product">
-            <div class="card-content">
-                <h3>Fashion Shoes</h3>
-                <p class="price">₹1499</p>
-                <button>Buy Now</button>
-            </div>
-        </div>
+    <div class="product-container">
 
-    </section>
+      <div class="card">
+        <h3>Fashion Wear</h3>
+        <p>
+          Trendy and comfortable outfits for daily style and confidence.
+        </p>
+        <div class="price">₹999</div>
+        <button>Add to Cart</button>
+      </div>
 
-    <footer>
-        © 2026 Greeshma's Store | All Rights Reserved
-    </footer>
+      <div class="card">
+        <h3>Beauty Products</h3>
+        <p>
+          Premium skincare and beauty collections for glowing skin.
+        </p>
+        <div class="price">₹799</div>
+        <button>Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <h3>Accessories</h3>
+        <p>
+          Stylish accessories to complete your everyday look.
+        </p>
+        <div class="price">₹499</div>
+        <button>Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About Us</h2>
+
+    <p>
+      Greeshma's Store is designed to provide a simple, modern, and elegant
+      shopping experience. We focus on quality products, affordable prices,
+      and customer satisfaction.
+    </p>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+
+    <form>
+      <input type="text" placeholder="Enter Your Name" required>
+      <input type="email" placeholder="Enter Your Email" required>
+      <textarea placeholder="Write Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2026 Greeshma's Store | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    function showMessage() {
+      alert("Welcome to Greeshma's Store!");
+    }
+  </script>
 
 </body>
 </html>
